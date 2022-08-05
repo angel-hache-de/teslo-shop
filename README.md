@@ -6,7 +6,6 @@ To run localy, it is needed the db
 docker-compose up -d
 ```
 
-- -d is \_\_detached
 
 - MongoDB URL Local:
 
