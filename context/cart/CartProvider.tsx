@@ -40,11 +40,11 @@ export const CartProvider: FC<CartProviderProps> = ({ children }) => {
   const [state, dispatch] = useReducer(cartReducer, CART_INITIAL_STATE);
 
   useEffect(() => {
-    console.log("WTFFFF");
     try {
-      const cart = !!Cookies.get("cart") ? JSON.parse(Cookies.get("cart")!) : [];
-      console.log(Cookies.get("cart"));
-        console.log(cart);
+      const cart = !!Cookies.get("cart")
+        ? JSON.parse(Cookies.get("cart")!)
+        : [];
+
       dispatch({
         type: "Cart - LoadCard from cookies | storage",
         payload: cart,
@@ -59,7 +59,6 @@ export const CartProvider: FC<CartProviderProps> = ({ children }) => {
   }, []);
 
   useEffect(() => {
-    console.log("WTF2");
     if (Cookies.get("firstName") === undefined) return;
 
     const shippingAddress = cookies.getAddressFromCookies();
@@ -70,10 +69,8 @@ export const CartProvider: FC<CartProviderProps> = ({ children }) => {
   }, []);
 
   useEffect(() => {
-    if(!state.isLoaded) return;
+    if (!state.isLoaded) return;
     const newCart = JSON.stringify(state.cart);
-    console.log("CAMBIANDO CARRITO ...");
-    console.log(newCart);
     Cookies.set("cart", newCart);
   }, [state.cart, state.isLoaded]);
 
