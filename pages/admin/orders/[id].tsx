@@ -35,9 +35,9 @@ const OrderPage: NextPage<Props> = ({ order }) => {
       subtitle={`Order: ${order._id}`}
       icon={<AirplaneTicketOutlined />}
     >
-      <Typography variant="h1" component="h1">
+      {/* <Typography variant="h1" component="h1">
         Order: {order._id}
-      </Typography>
+      </Typography> */}
 
       {!order.isPaid ? (
         <Chip
