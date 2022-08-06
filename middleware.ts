@@ -23,9 +23,8 @@ export async function middleware(request: NextRequest) {
 
   // API VALIDATION
   if (
-    !session ||
-    ((session.user as any).role !== "admin" &&
-      request.nextUrl.pathname.startsWith("/api/admin"))
+    (!session || (session.user as any).role !== "admin") &&
+    request.nextUrl.pathname.startsWith("/api/admin")
   ) {
     request.nextUrl.pathname = "/api/admin/unauthorized";
     return NextResponse.rewrite(request.nextUrl);
